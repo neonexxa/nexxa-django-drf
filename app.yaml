@@ -1,0 +1,22 @@
+# [START django_app]
+runtime: python37
+service: default
+entrypoint: gunicorn -b :8081 core.wsgi --timeout 200 --workers=4
+
+handlers:
+  - url: /static
+    static_dir: static/
+  - url: /.*
+    script: auto
+    secure: always
+
+env_variables:
+  SQL_INSTANCE_ID: 
+  SQL_PASSWORD: 
+  SQL_REGION: 
+  GCP_PROJECT: 
+  GCP_BUCKET_NAME: 
+  # EMAIL_PORT: 587
+  # EMAIL_HOST_USER: noreply@tmmdms.com
+  # EMAIL_HOST_PASSWORD: PASSWORDEMAUL
+# [END django_app]

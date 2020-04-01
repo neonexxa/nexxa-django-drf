@@ -1,0 +1,1372 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "",
+    "version": ""
+  },
+  "paths": {
+    "/api/ForgotPassword/": {
+      "get": {
+        "operationId": "listForgotPasswords",
+        "description": "docstring for ForgotPassword",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {}
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "operationId": "CreateForgotPassword",
+        "description": "docstring for ForgotPassword",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/users/": {
+      "get": {
+        "operationId": "listUsers",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "readOnly": true
+                      },
+                      "url": {
+                        "type": "string",
+                        "readOnly": true
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email",
+                        "maxLength": 254
+                      },
+                      "reset_token": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "full_name": {
+                        "type": "string",
+                        "maxLength": 50
+                      },
+                      "profile": {
+                        "properties": {
+                          "title": {
+                            "type": "string",
+                            "nullable": true,
+                            "maxLength": 50
+                          },
+                          "dob": {
+                            "type": "string",
+                            "format": "date",
+                            "nullable": true
+                          },
+                          "address": {
+                            "type": "string",
+                            "nullable": true,
+                            "maxLength": 255
+                          },
+                          "country": {
+                            "type": "string",
+                            "nullable": true,
+                            "maxLength": 50
+                          },
+                          "city": {
+                            "type": "string",
+                            "nullable": true,
+                            "maxLength": 50
+                          },
+                          "poscode": {
+                            "type": "string",
+                            "nullable": true,
+                            "maxLength": 5
+                          },
+                          "photo": {
+                            "type": "string",
+                            "format": "binary",
+                            "nullable": true
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "mobile": {
+                        "type": "string",
+                        "maxLength": 20
+                      },
+                      "status": {
+                        "type": "integer",
+                        "maximum": 2147483647,
+                        "minimum": -2147483648,
+                        "nullable": true
+                      },
+                      "avatar_v2": {
+                        "type": "string",
+                        "maxLength": 500
+                      }
+                    },
+                    "required": [
+                      "email",
+                      "profile",
+                      "mobile"
+                    ]
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "operationId": "createUser",
+        "description": "",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 254
+                  },
+                  "reset_token": {
+                    "type": "string",
+                    "nullable": true,
+                    "maxLength": 50
+                  },
+                  "full_name": {
+                    "type": "string",
+                    "maxLength": 50
+                  },
+                  "password": {
+                    "type": "string",
+                    "writeOnly": true,
+                    "maxLength": 128
+                  },
+                  "profile": {
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "dob": {
+                        "type": "string",
+                        "format": "date",
+                        "nullable": true
+                      },
+                      "address": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 255
+                      },
+                      "country": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "city": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "poscode": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 5
+                      },
+                      "photo": {
+                        "type": "string",
+                        "format": "binary",
+                        "nullable": true
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "mobile": {
+                    "type": "string",
+                    "maxLength": 20
+                  },
+                  "status": {
+                    "type": "integer",
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "nullable": true
+                  },
+                  "avatar_v2": {
+                    "type": "string",
+                    "maxLength": 500
+                  }
+                },
+                "required": [
+                  "email",
+                  "password",
+                  "profile",
+                  "mobile"
+                ]
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 254
+                  },
+                  "reset_token": {
+                    "type": "string",
+                    "nullable": true,
+                    "maxLength": 50
+                  },
+                  "full_name": {
+                    "type": "string",
+                    "maxLength": 50
+                  },
+                  "password": {
+                    "type": "string",
+                    "writeOnly": true,
+                    "maxLength": 128
+                  },
+                  "profile": {
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "dob": {
+                        "type": "string",
+                        "format": "date",
+                        "nullable": true
+                      },
+                      "address": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 255
+                      },
+                      "country": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "city": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "poscode": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 5
+                      },
+                      "photo": {
+                        "type": "string",
+                        "format": "binary",
+                        "nullable": true
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "mobile": {
+                    "type": "string",
+                    "maxLength": 20
+                  },
+                  "status": {
+                    "type": "integer",
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "nullable": true
+                  },
+                  "avatar_v2": {
+                    "type": "string",
+                    "maxLength": 500
+                  }
+                },
+                "required": [
+                  "email",
+                  "password",
+                  "profile",
+                  "mobile"
+                ]
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 254
+                  },
+                  "reset_token": {
+                    "type": "string",
+                    "nullable": true,
+                    "maxLength": 50
+                  },
+                  "full_name": {
+                    "type": "string",
+                    "maxLength": 50
+                  },
+                  "password": {
+                    "type": "string",
+                    "writeOnly": true,
+                    "maxLength": 128
+                  },
+                  "profile": {
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "dob": {
+                        "type": "string",
+                        "format": "date",
+                        "nullable": true
+                      },
+                      "address": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 255
+                      },
+                      "country": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "city": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "poscode": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 5
+                      },
+                      "photo": {
+                        "type": "string",
+                        "format": "binary",
+                        "nullable": true
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "mobile": {
+                    "type": "string",
+                    "maxLength": 20
+                  },
+                  "status": {
+                    "type": "integer",
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "nullable": true
+                  },
+                  "avatar_v2": {
+                    "type": "string",
+                    "maxLength": 500
+                  }
+                },
+                "required": [
+                  "email",
+                  "password",
+                  "profile",
+                  "mobile"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "readOnly": true
+                    },
+                    "url": {
+                      "type": "string",
+                      "readOnly": true
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email",
+                      "maxLength": 254
+                    },
+                    "reset_token": {
+                      "type": "string",
+                      "nullable": true,
+                      "maxLength": 50
+                    },
+                    "full_name": {
+                      "type": "string",
+                      "maxLength": 50
+                    },
+                    "profile": {
+                      "properties": {
+                        "title": {
+                          "type": "string",
+                          "nullable": true,
+                          "maxLength": 50
+                        },
+                        "dob": {
+                          "type": "string",
+                          "format": "date",
+                          "nullable": true
+                        },
+                        "address": {
+                          "type": "string",
+                          "nullable": true,
+                          "maxLength": 255
+                        },
+                        "country": {
+                          "type": "string",
+                          "nullable": true,
+                          "maxLength": 50
+                        },
+                        "city": {
+                          "type": "string",
+                          "nullable": true,
+                          "maxLength": 50
+                        },
+                        "poscode": {
+                          "type": "string",
+                          "nullable": true,
+                          "maxLength": 5
+                        },
+                        "photo": {
+                          "type": "string",
+                          "format": "binary",
+                          "nullable": true
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "mobile": {
+                      "type": "string",
+                      "maxLength": 20
+                    },
+                    "status": {
+                      "type": "integer",
+                      "maximum": 2147483647,
+                      "minimum": -2147483648,
+                      "nullable": true
+                    },
+                    "avatar_v2": {
+                      "type": "string",
+                      "maxLength": 500
+                    }
+                  },
+                  "required": [
+                    "email",
+                    "profile",
+                    "mobile"
+                  ]
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/users/{id}/": {
+      "get": {
+        "operationId": "retrieveUser",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "A unique integer value identifying this user.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "readOnly": true
+                    },
+                    "url": {
+                      "type": "string",
+                      "readOnly": true
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email",
+                      "maxLength": 254
+                    },
+                    "reset_token": {
+                      "type": "string",
+                      "nullable": true,
+                      "maxLength": 50
+                    },
+                    "full_name": {
+                      "type": "string",
+                      "maxLength": 50
+                    },
+                    "profile": {
+                      "properties": {
+                        "title": {
+                          "type": "string",
+                          "nullable": true,
+                          "maxLength": 50
+                        },
+                        "dob": {
+                          "type": "string",
+                          "format": "date",
+                          "nullable": true
+                        },
+                        "address": {
+                          "type": "string",
+                          "nullable": true,
+                          "maxLength": 255
+                        },
+                        "country": {
+                          "type": "string",
+                          "nullable": true,
+                          "maxLength": 50
+                        },
+                        "city": {
+                          "type": "string",
+                          "nullable": true,
+                          "maxLength": 50
+                        },
+                        "poscode": {
+                          "type": "string",
+                          "nullable": true,
+                          "maxLength": 5
+                        },
+                        "photo": {
+                          "type": "string",
+                          "format": "binary",
+                          "nullable": true
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "mobile": {
+                      "type": "string",
+                      "maxLength": 20
+                    },
+                    "status": {
+                      "type": "integer",
+                      "maximum": 2147483647,
+                      "minimum": -2147483648,
+                      "nullable": true
+                    },
+                    "avatar_v2": {
+                      "type": "string",
+                      "maxLength": 500
+                    }
+                  },
+                  "required": [
+                    "email",
+                    "profile",
+                    "mobile"
+                  ]
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateUser",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "A unique integer value identifying this user.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 254
+                  },
+                  "reset_token": {
+                    "type": "string",
+                    "nullable": true,
+                    "maxLength": 50
+                  },
+                  "full_name": {
+                    "type": "string",
+                    "maxLength": 50
+                  },
+                  "password": {
+                    "type": "string",
+                    "writeOnly": true,
+                    "maxLength": 128
+                  },
+                  "profile": {
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "dob": {
+                        "type": "string",
+                        "format": "date",
+                        "nullable": true
+                      },
+                      "address": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 255
+                      },
+                      "country": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "city": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "poscode": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 5
+                      },
+                      "photo": {
+                        "type": "string",
+                        "format": "binary",
+                        "nullable": true
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "mobile": {
+                    "type": "string",
+                    "maxLength": 20
+                  },
+                  "status": {
+                    "type": "integer",
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "nullable": true
+                  },
+                  "avatar_v2": {
+                    "type": "string",
+                    "maxLength": 500
+                  }
+                },
+                "required": [
+                  "email",
+                  "password",
+                  "profile",
+                  "mobile"
+                ]
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 254
+                  },
+                  "reset_token": {
+                    "type": "string",
+                    "nullable": true,
+                    "maxLength": 50
+                  },
+                  "full_name": {
+                    "type": "string",
+                    "maxLength": 50
+                  },
+                  "password": {
+                    "type": "string",
+                    "writeOnly": true,
+                    "maxLength": 128
+                  },
+                  "profile": {
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "dob": {
+                        "type": "string",
+                        "format": "date",
+                        "nullable": true
+                      },
+                      "address": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 255
+                      },
+                      "country": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "city": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "poscode": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 5
+                      },
+                      "photo": {
+                        "type": "string",
+                        "format": "binary",
+                        "nullable": true
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "mobile": {
+                    "type": "string",
+                    "maxLength": 20
+                  },
+                  "status": {
+                    "type": "integer",
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "nullable": true
+                  },
+                  "avatar_v2": {
+                    "type": "string",
+                    "maxLength": 500
+                  }
+                },
+                "required": [
+                  "email",
+                  "password",
+                  "profile",
+                  "mobile"
+                ]
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 254
+                  },
+                  "reset_token": {
+                    "type": "string",
+                    "nullable": true,
+                    "maxLength": 50
+                  },
+                  "full_name": {
+                    "type": "string",
+                    "maxLength": 50
+                  },
+                  "password": {
+                    "type": "string",
+                    "writeOnly": true,
+                    "maxLength": 128
+                  },
+                  "profile": {
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "dob": {
+                        "type": "string",
+                        "format": "date",
+                        "nullable": true
+                      },
+                      "address": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 255
+                      },
+                      "country": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "city": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "poscode": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 5
+                      },
+                      "photo": {
+                        "type": "string",
+                        "format": "binary",
+                        "nullable": true
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "mobile": {
+                    "type": "string",
+                    "maxLength": 20
+                  },
+                  "status": {
+                    "type": "integer",
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "nullable": true
+                  },
+                  "avatar_v2": {
+                    "type": "string",
+                    "maxLength": 500
+                  }
+                },
+                "required": [
+                  "email",
+                  "password",
+                  "profile",
+                  "mobile"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "readOnly": true
+                    },
+                    "url": {
+                      "type": "string",
+                      "readOnly": true
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email",
+                      "maxLength": 254
+                    },
+                    "reset_token": {
+                      "type": "string",
+                      "nullable": true,
+                      "maxLength": 50
+                    },
+                    "full_name": {
+                      "type": "string",
+                      "maxLength": 50
+                    },
+                    "profile": {
+                      "properties": {
+                        "title": {
+                          "type": "string",
+                          "nullable": true,
+                          "maxLength": 50
+                        },
+                        "dob": {
+                          "type": "string",
+                          "format": "date",
+                          "nullable": true
+                        },
+                        "address": {
+                          "type": "string",
+                          "nullable": true,
+                          "maxLength": 255
+                        },
+                        "country": {
+                          "type": "string",
+                          "nullable": true,
+                          "maxLength": 50
+                        },
+                        "city": {
+                          "type": "string",
+                          "nullable": true,
+                          "maxLength": 50
+                        },
+                        "poscode": {
+                          "type": "string",
+                          "nullable": true,
+                          "maxLength": 5
+                        },
+                        "photo": {
+                          "type": "string",
+                          "format": "binary",
+                          "nullable": true
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "mobile": {
+                      "type": "string",
+                      "maxLength": 20
+                    },
+                    "status": {
+                      "type": "integer",
+                      "maximum": 2147483647,
+                      "minimum": -2147483648,
+                      "nullable": true
+                    },
+                    "avatar_v2": {
+                      "type": "string",
+                      "maxLength": 500
+                    }
+                  },
+                  "required": [
+                    "email",
+                    "profile",
+                    "mobile"
+                  ]
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "operationId": "partial_updateUser",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "A unique integer value identifying this user.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 254
+                  },
+                  "reset_token": {
+                    "type": "string",
+                    "nullable": true,
+                    "maxLength": 50
+                  },
+                  "full_name": {
+                    "type": "string",
+                    "maxLength": 50
+                  },
+                  "password": {
+                    "type": "string",
+                    "writeOnly": true,
+                    "maxLength": 128
+                  },
+                  "profile": {
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "dob": {
+                        "type": "string",
+                        "format": "date",
+                        "nullable": true
+                      },
+                      "address": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 255
+                      },
+                      "country": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "city": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "poscode": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 5
+                      },
+                      "photo": {
+                        "type": "string",
+                        "format": "binary",
+                        "nullable": true
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "mobile": {
+                    "type": "string",
+                    "maxLength": 20
+                  },
+                  "status": {
+                    "type": "integer",
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "nullable": true
+                  },
+                  "avatar_v2": {
+                    "type": "string",
+                    "maxLength": 500
+                  }
+                }
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 254
+                  },
+                  "reset_token": {
+                    "type": "string",
+                    "nullable": true,
+                    "maxLength": 50
+                  },
+                  "full_name": {
+                    "type": "string",
+                    "maxLength": 50
+                  },
+                  "password": {
+                    "type": "string",
+                    "writeOnly": true,
+                    "maxLength": 128
+                  },
+                  "profile": {
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "dob": {
+                        "type": "string",
+                        "format": "date",
+                        "nullable": true
+                      },
+                      "address": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 255
+                      },
+                      "country": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "city": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "poscode": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 5
+                      },
+                      "photo": {
+                        "type": "string",
+                        "format": "binary",
+                        "nullable": true
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "mobile": {
+                    "type": "string",
+                    "maxLength": 20
+                  },
+                  "status": {
+                    "type": "integer",
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "nullable": true
+                  },
+                  "avatar_v2": {
+                    "type": "string",
+                    "maxLength": 500
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 254
+                  },
+                  "reset_token": {
+                    "type": "string",
+                    "nullable": true,
+                    "maxLength": 50
+                  },
+                  "full_name": {
+                    "type": "string",
+                    "maxLength": 50
+                  },
+                  "password": {
+                    "type": "string",
+                    "writeOnly": true,
+                    "maxLength": 128
+                  },
+                  "profile": {
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "dob": {
+                        "type": "string",
+                        "format": "date",
+                        "nullable": true
+                      },
+                      "address": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 255
+                      },
+                      "country": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "city": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50
+                      },
+                      "poscode": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 5
+                      },
+                      "photo": {
+                        "type": "string",
+                        "format": "binary",
+                        "nullable": true
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "mobile": {
+                    "type": "string",
+                    "maxLength": 20
+                  },
+                  "status": {
+                    "type": "integer",
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "nullable": true
+                  },
+                  "avatar_v2": {
+                    "type": "string",
+                    "maxLength": 500
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "readOnly": true
+                    },
+                    "url": {
+                      "type": "string",
+                      "readOnly": true
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email",
+                      "maxLength": 254
+                    },
+                    "reset_token": {
+                      "type": "string",
+                      "nullable": true,
+                      "maxLength": 50
+                    },
+                    "full_name": {
+                      "type": "string",
+                      "maxLength": 50
+                    },
+                    "profile": {
+                      "properties": {
+                        "title": {
+                          "type": "string",
+                          "nullable": true,
+                          "maxLength": 50
+                        },
+                        "dob": {
+                          "type": "string",
+                          "format": "date",
+                          "nullable": true
+                        },
+                        "address": {
+                          "type": "string",
+                          "nullable": true,
+                          "maxLength": 255
+                        },
+                        "country": {
+                          "type": "string",
+                          "nullable": true,
+                          "maxLength": 50
+                        },
+                        "city": {
+                          "type": "string",
+                          "nullable": true,
+                          "maxLength": 50
+                        },
+                        "poscode": {
+                          "type": "string",
+                          "nullable": true,
+                          "maxLength": 5
+                        },
+                        "photo": {
+                          "type": "string",
+                          "format": "binary",
+                          "nullable": true
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "mobile": {
+                      "type": "string",
+                      "maxLength": 20
+                    },
+                    "status": {
+                      "type": "integer",
+                      "maximum": 2147483647,
+                      "minimum": -2147483648,
+                      "nullable": true
+                    },
+                    "avatar_v2": {
+                      "type": "string",
+                      "maxLength": 500
+                    }
+                  },
+                  "required": [
+                    "email",
+                    "profile",
+                    "mobile"
+                  ]
+                }
+              }
+            },
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "operationId": "destroyUser",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "A unique integer value identifying this user.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/RequestForgotPassword/": {
+      "post": {
+        "operationId": "CreateRequestForgotPassword",
+        "description": "docstring for ForgotPassword",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": ""
+          }
+        }
+      }
+    }
+  }
+}
